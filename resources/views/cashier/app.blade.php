@@ -4,7 +4,7 @@
             <h3 class="card-title">Kasir - Transaksi Baru</h3>
         </div>
         <div class="card-body">
-            <form action="  " method="POST">
+            <form action="/cashier" method="POST">
                 @csrf
 
                 <!-- Input Harga Service -->

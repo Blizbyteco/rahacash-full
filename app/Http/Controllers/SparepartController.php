@@ -6,6 +6,7 @@ use App\Models\Sparepart;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SparepartController extends Controller
 {
@@ -71,7 +72,7 @@ class SparepartController extends Controller
         $sparepart->increment('stock', $request->stock_amount);
 
         $transaction = Transaction::create([
-            'user_id' => 2,
+            'user_id' => Auth::user()->id,
             'type' => 'outcome',
             'amount' => $request->stock_price * $request->stock_amount,
             'description' => "Pembelian stok untuk {$sparepart->name}",

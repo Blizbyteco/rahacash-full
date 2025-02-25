@@ -6,6 +6,7 @@ use App\Models\Sparepart;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CashierController extends Controller
 {
@@ -29,7 +30,7 @@ class CashierController extends Controller
         ]);
 
         $transaction = Transaction::create([
-            'user_id' => 1,
+            'user_id' => Auth::user()->id,
             'type' => 'income',
             'amount' => $request->total_amount, 
             'description' => $request->service_description ?? 'Pembayaran sparepart',
