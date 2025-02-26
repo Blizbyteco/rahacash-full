@@ -68,6 +68,6 @@ class CashierController extends Controller
             }
         }
 
-        return redirect('/')->with('success', 'Transaksi berhasil disimpan!');
+        return redirect('transaction/income/'.$transaction->id.'/detail');
     }
 }

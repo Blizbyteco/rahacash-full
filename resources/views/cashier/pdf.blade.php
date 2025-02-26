@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Invoice</title>
+    <title>Invoice#{{ $transaction->id }}</title>
     <style>
         body {
             font-family: sans-serif;
@@ -22,8 +22,8 @@
 </head>
 <body>
     <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h2>Invoice #131</h2>
-        <p style="font-size: 0.7em;">2024-01-01 - 2024-02-01</p>
+        <h2>Invoice#{{ $transaction->id }}</h2>
+        <p style="font-size: 0.7em;">{{ $transaction->created_at }}</p>
     </div>
     <table>
         <thead>
@@ -34,17 +34,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Ahmad</td>
-                <td>Rp 500.000</td>
-            </tr>
+            @foreach ($transaction->details as $detail)
+                <tr>
+                    <td>{{
+                        $detail->sparepart === null ? 'Service' :
+                        $detail->sparepart->name 
+                    }}</td>
+                    <td>{{ $detail->qty }}</td>
+                    <td>Rp {{ number_format($detail->amount, 0, ',', '.') }}</td>
+                </tr>
+            @endforeach
             <tr>
                 <td colspan="2" style="border: none;">
                 </td>
                 <td colspan="1" style="display: flex; justify-content: space-between; border: none;">
                     <b>Total Keseluruhan</b>
-                    Rp.120.000.000
+                    Rp {{ number_format($transaction->amount, 0, ',', '.') }}
                 </td>
             </tr>
         </tbody>

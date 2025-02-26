@@ -28,7 +28,7 @@ class IncomeController extends Controller
     }
     
     public function detail($id) {
-        $transaction = Transaction::with('details', 'user')->findOrFail($id);
+        $transaction = Transaction::with('details.sparepart', 'user')->findOrFail($id);
         $data = [
             'transaction' => $transaction
         ];
@@ -58,6 +58,17 @@ class IncomeController extends Controller
         ];
         
         $pdf = PDF::loadView('transaction.income.pdf', $data);
+        return $pdf->download($filename);
+    }
+
+    public function exportPDFInvoice($id) {
+        $transaction = Transaction::with('details.sparepart')->findOrFail($id);
+        $data = [
+            'transaction' => $transaction
+        ];
+        
+        $pdf = PDF::loadView('cashier.pdf', $data);
+        $filename = 'Invoice#'.$transaction->id.'.pdf';
         return $pdf->download($filename);
     }
 }

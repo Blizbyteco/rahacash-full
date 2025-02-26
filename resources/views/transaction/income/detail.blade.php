@@ -33,8 +33,9 @@
                     <tr>
                         <th>#</th>
                         <th>Jenis</th>
+                        <th>Nama</th>
                         <th>Jumlah</th>
-                        <th>Harga</th>
+                        <th>Total Harga</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,12 +43,21 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>{{ ucfirst($detail->type) }}</td>
+                        <td>{{ 
+                            $detail->sparepart === null ? '-' :
+                            $detail->sparepart->name 
+                        }}</td>
                         <td>{{ $detail->qty }}</td>
                         <td>Rp {{ number_format($detail->amount, 0, ',', '.') }}</td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            <div class="mt-3">
+                <form action={{ route('invoice.income.export-pdf', $transaction->id) }} method="get">
+                    <button class="btn btn-success">Cetak Invoice</button>
+                </form>
+            </div>
         </div>
     </div>
 </x-layout>

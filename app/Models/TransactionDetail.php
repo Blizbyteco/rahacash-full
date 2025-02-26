@@ -10,4 +10,7 @@ class TransactionDetail extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    public function sparepart() {
+        return $this->belongsTo(Sparepart::class);
+    }
 }

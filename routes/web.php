@@ -44,4 +44,5 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/transaction/income', [IncomeController::class, 'index']);
     Route::get('/transaction/income/export/pdf', [IncomeController::class, 'exportPDF'])->name('transaction.income.export-pdf');
     Route::get('/transaction/income/{id}/detail', [IncomeController::class, 'detail']);
+    Route::get('/transaction/income/{id}/invoice/export/pdf', [IncomeController::class, 'exportPDFInvoice'])->name('invoice.income.export-pdf');
 });
