@@ -10,11 +10,18 @@ use Illuminate\Support\Facades\Auth;
 
 class SparepartController extends Controller
 {
-    public function index() {
-        $spareparts = Sparepart::all();
+    public function index(Request $request) {
+        $query = Sparepart::query();
+
+        if ($request->has('search')) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        $spareparts = $query->paginate(10);
         $data = [
             'spareparts' => $spareparts
         ];
+
         return view('sparepart.app', $data);
     }
     

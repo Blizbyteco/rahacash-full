@@ -7,7 +7,13 @@
             </div>
         </div>
         <div class="card-body">
-            <table id="sparepartTable"  class="table table-bordered">
+            <form method="GET" action="{{ route('sparepart.index') }}" class="mb-3">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Cari sparepart..." value="{{ request('search') }}">
+                    <button type="submit" class="btn btn-secondary">Cari</button>
+                </div>
+            </form>
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -42,6 +48,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="mt-3">
+                {{ $spareparts->links() }}
+            </div>
         </div>
     </div>
 
