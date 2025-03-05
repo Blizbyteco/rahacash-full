@@ -2,20 +2,20 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="card bg-success p-4">
-                <h1 class="text-xl">RP. {{ number_format($income, 0, ',', '.') }}</h1>
+                <h1 class="text-xl">Rp. {{ number_format($income, 0, ',', '.') }}</h1>
                 <p class="text-sm">Income</p>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="card bg-danger p-4">
-                <h1 class="text-xl">RP. {{ number_format($outcome, 0, ',', '.') }}</h1>
+                <h1 class="text-xl">Rp. {{ number_format($outcome, 0, ',', '.') }}</h1>
                 <p class="text-sm">Outcome</p>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="card bg-primary p-4">
-                <h1 class="text-xl">{{ $employee }}</h1>
-                <p class="text-sm">Karyawan</p>
+                <h1 class="text-xl">Rp. {{ number_format($income - $outcome, 0, ',', '.') }}</h1>
+                <p class="text-sm">Keuntungan</p>
             </div>
         </div>
     </div>

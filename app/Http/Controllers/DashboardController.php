@@ -11,7 +11,6 @@ class DashboardController extends Controller
     public function index() {
         $totalIncome = Transaction::where('type', 'income')->sum('amount');
         $totalOutcome = Transaction::where('type', 'outcome')->sum('amount');
-        $totalEmployee = User::where('role', 'staff')->count();
 
         $startDate = now()->subDays(20)->startOfDay();
         $endDate = now()->addDays(10)->endOfDay();
@@ -39,7 +38,6 @@ class DashboardController extends Controller
             'dates' => json_encode($dates),
             'incomes' => json_encode($incomes),
             'outcomes' => json_encode($outcomes),
-            'employee' => $totalEmployee
         ];
 
         return view('dashboard.app', $data);
