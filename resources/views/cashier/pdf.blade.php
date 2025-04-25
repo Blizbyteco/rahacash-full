@@ -24,6 +24,7 @@
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <h2>Invoice#{{ $transaction->id }}</h2>
         <p style="font-size: 0.7em;">{{ $transaction->created_at }}</p>
+        <p style="font-size: 0.7em;">Nama Kustomer: {{ $transaction->customer_name }}</p>
     </div>
     <table>
         <thead>

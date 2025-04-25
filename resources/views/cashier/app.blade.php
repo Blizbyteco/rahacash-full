@@ -57,6 +57,17 @@
                     </select>
                 </div>
 
+                <!-- Input Nama -->
+                <div class="mb-3">
+                    <label class="form-label">Nama Kustomer:</label>
+                    <input type="number" name="customer_name" id="customer-name" class="form-control @error('customer-name') is-invalid @enderror" placeholder="Masukkan nama kustomer">
+                    @error('customer-name')
+                    <div class="invalid-feedback">
+                        {{  $message }}
+                    </div>                    
+                    @enderror
+                </div>
+
                 <!-- Total Harga -->
                 <div class="mb-3">
                     <h4>Total: Rp <span id="total-price">0</span></h4>

@@ -27,14 +27,16 @@ class CashierController extends Controller
             'sparepart_qtys' => 'nullable|array',
             'payment_method' => 'required|string',
             'total_amount' => 'required|integer|min:0',
+            'customer_name' => 'required|string'
         ]);
-
+        
         $transaction = Transaction::create([
             'user_id' => Auth::user()->id,
             'type' => 'income',
             'amount' => $request->total_amount, 
             'description' => $request->service_description ?? 'Pembayaran sparepart',
-            'payment' => $request->payment_method
+            'payment' => $request->payment_method,
+            'customer_name' => $request->customer_name
         ]);
 
         if ($request->service_price > 0) {
