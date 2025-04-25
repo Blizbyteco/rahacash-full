@@ -55,5 +55,11 @@
             </tr>
         </tbody>
     </table>
+
+    <div style="margin-top: 20px; width: 100%; display: flex; justify-content: flex-end;">
+        <div>
+            <img src="data:image/png;base64,{{ $ttd }}" width="80" height="80" />
+        </div>
+    </div>
 </body>
 </html>

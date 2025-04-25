@@ -64,7 +64,9 @@ class IncomeController extends Controller
     public function exportPDFInvoice($id) {
         $transaction = Transaction::with('details.sparepart')->findOrFail($id);
         $data = [
-            'transaction' => $transaction
+            'transaction' => $transaction,
+            'ttd' => base64_encode(file_get_contents(public_path('ttd.png')))
+
         ];
         
         $pdf = PDF::loadView('cashier.pdf', $data);
