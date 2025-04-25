@@ -10,6 +10,10 @@
                     <td>{{ $transaction->user->name }}</td>
                 </tr>
                 <tr>
+                    <th>Nama Kustomer</th>
+                    <td>{{ $transaction->customer_name }}</td>
+                </tr>
+                <tr>
                     <th>Total</th>
                     <td>Rp {{ number_format($transaction->amount, 0, ',', '.') }}</td>
                 </tr>
