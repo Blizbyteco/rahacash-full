@@ -52,12 +52,15 @@ class TransactionSeeder extends Seeder
                 ? rand(50000, 500000) 
                 : rand(100000, 1000000);
 
+            $payment_methods = ['cash', 'transfer', 'qris'];
+
             $transactionId = DB::table('transactions')->insertGetId([
                 'user_id' => $users[array_rand($users)], // Random user
                 'type' => $type,
                 'amount' => $amount,
                 'description' => $description,
-                'payment' => ['cash', 'transfer', 'qris'][array_rand(['cash', 'transfer', 'qris'])],
+                'payment' => $payment_methods[array_rand(['cash', 'transfer', 'qris'])],
+                'customer_name' => 'Alvin',
                 'created_at' => $randomDate,
                 'updated_at' => $randomDate,
             ]);

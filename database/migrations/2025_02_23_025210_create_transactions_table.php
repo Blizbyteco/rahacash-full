@@ -19,7 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->enum('type', ['income', 'outcome']);
             $table->integer('amount');
             $table->text('description');
-            $table->enum('payment', ['cash', 'trasnfer', 'qris']);
+            $table->enum('payment', ['cash', 'transfer', 'qris']);
             $table->string('customer_name')->nullable();
             $table->timestamps();   
         });
